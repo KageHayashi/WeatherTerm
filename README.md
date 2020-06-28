@@ -22,7 +22,7 @@ python -m weatherterm -s [STATE] -c [CITY]
 ![](testimages/example.JPG)
 
 ## Help 
-Use
+To display the help menu use:
 ```
 python -m weatherterm -h
 ```
@@ -30,7 +30,6 @@ OR
 ```
 python -m weatherterm --help
 ```
-To display the help menu
 ![](testimages/help.PNG)
 
 ## Features
@@ -40,4 +39,5 @@ To display the help menu
 ## TO-DO
 - [ ] Forecast future weather (ex. Five-day, Ten-day, Weekend)
 - [ ] Add icons and stylize the interface
+- [ ] Unit conversion
 - [ ] Possible migration into a full-fledged CLI
