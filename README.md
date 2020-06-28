@@ -6,17 +6,17 @@
 Install requirements by typing the following command:
 
 ```
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 OR
 ```
-python3 -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## Running the module
 Since this is intented as a python module, you have to run it with the -m command. Be inside the WeatherTerm directory and use the following command:
 ```
-python3 -m weatherterm -s [STATE] -c [CITY]
+python -m weatherterm -s [STATE] -c [CITY]
 ```
 ### Example
 ![](testimages/example.JPG)
@@ -24,11 +24,11 @@ python3 -m weatherterm -s [STATE] -c [CITY]
 ## Help 
 To display the help menu use:
 ```
-python3 -m weatherterm -h
+python -m weatherterm -h
 ```
 OR
 ```
-python3 -m weatherterm --help
+python -m weatherterm --help
 ```
 ![](testimages/help.PNG)
 
