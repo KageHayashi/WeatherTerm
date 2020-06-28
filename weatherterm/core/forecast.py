@@ -1,5 +1,4 @@
 from datetime import date
-# from .forecast_type import ForecastType
 class Forecast:
     def __init__(
         self, 
@@ -16,7 +15,6 @@ class Forecast:
         self._humidity = humidity
         self._wind = wind
         self._description = description
-        # self._forecast_type = forecast_type
     
     @property
     def forecast_date(self):

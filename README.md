@@ -41,3 +41,4 @@ python -m weatherterm --help
 - [ ] Add icons and stylize the interface
 - [ ] Unit conversion
 - [ ] Possible migration into a full-fledged CLI
+- [ ] Option to use different parsers and API

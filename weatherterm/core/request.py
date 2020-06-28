@@ -10,6 +10,7 @@ weatherBaseURL = "https://weather.com/weather/today/l/"
 weatherCodesURL = "https://weather.codes/united-states-of-america/"
 
 
+#Request all city weather code of a given state and save it as a json file
 def requestCodes(state):
     state = state
 
@@ -25,10 +26,10 @@ def requestCodes(state):
         for code in codes[i].find_all("li"):
             codesDict[code.strong.contents[0]] = code.span.contents[0]
 
-    print(codesDict)
     with open(str(pathlib.Path().absolute()) + '\\weatherterm\\core\\state_codes\\%s.json' % state, "w+") as json_file:
         json.dump(codesDict, json_file)
 
+#Request the forecast on a city and return a Forecast class
 def requestForecast(state='', city='', code=None):
     state = state
     city = city
@@ -43,7 +44,9 @@ def requestForecast(state='', city='', code=None):
         requestCodes(state)
         with open(str(pathlib.Path().absolute()) + '\\weatherterm\\core\\state_codes\\%s.json' % state, "r") as f:
             jdata = json.load(f)
-            code = jdata[city]
+            if len(get_close_matches(city, jdata.keys())) > 0:
+                city = get_close_matches(city, jdata.keys())[0]
+                code = jdata[city]
 
     #Weather Forcast Request
     weatherRequest = requests.get(weatherBaseURL + str(code))
@@ -58,10 +61,5 @@ def requestForecast(state='', city='', code=None):
     high= (moleculeData[0].contents[0].contents[0])
     low = (moleculeData[0].contents[2].contents[0])
     wind = (moleculeData[1].contents[0].contents[-1])
-    return Forecast(current, humidity, wind, high, low)
 
-# def test():
-#     requestCodes("california")
-#     with open(str(pathlib.Path().absolute()) + '\\weatherterm\\core\\state_codes\\california.json') as f:
-#         j = (json.load(f))
-#         print(j['San Francisco'])
+    return Forecast(current, humidity, wind, high, low)
