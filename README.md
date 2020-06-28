@@ -1,5 +1,5 @@
 # WeatherTerm
-##### A simple command line parser interface for weather information via weather.com
+#### A simple command line parser interface for weather information via weather.com
 
 ## Installation 
 ### a. Requirements
