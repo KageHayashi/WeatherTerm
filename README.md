@@ -34,7 +34,7 @@ python -m weatherterm --help
 
 ## Features
 * Display info about current temperature, humidity, wind speed, and high/low temp of the day
-* Find info on any city in the U.S 
+* Find weather info on any city in the U.S 
 
 ## TO-DO
 - [ ] Forecast future weather (ex. Five-day, Ten-day, Weekend)
