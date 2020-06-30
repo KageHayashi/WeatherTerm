@@ -12,6 +12,7 @@ unit_values = [name.title() for name, value in Unit.__members__.items()]
 required.add_argument('-s', '--state',
 	required=True,
 	dest='State',
+	metavar='state',
 	help='ex. california, new-york')
 
 required.add_argument('-c', '--city',
@@ -33,4 +34,5 @@ argparser.add_argument('-C', '--code',
 args = argparser.parse_args()
 city = ' '.join(args.City)
 forecast = requestForecast(state=args.State, city=city, code=args.Code)
-print(forecast)
+if forecast is not None:
+	print(forecast)

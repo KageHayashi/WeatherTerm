@@ -1,7 +1,10 @@
 from datetime import date
+from .colors import colors
 class Forecast:
     def __init__(
         self, 
+        city,
+        state,
         current_temp,
         humidity,
         wind,
@@ -9,6 +12,8 @@ class Forecast:
         low_temp=None,
         description='',
         forecast_date=None,):
+        self.city = city
+        self.state = state
         self._current_temp = current_temp
         self._high_temp = high_temp
         self._low_temp = low_temp
@@ -44,10 +49,18 @@ class Forecast:
 
     def __str__(self):
         temperature = None
-        offset = ' ' * 4
-        
-        return(f'Temp: {self.current_temp}\n'
-               f'Humidity: {self.humidity}\n'
-               f'Wind: {self.wind}\n'
-               f'High/Low: {self.high_temp}/{self.low_temp}\n'
+        offset = ' ' * 3
+        indent = '\u00A4'
+
+        Status_OK = f'[{colors.OKGREEN}+{colors.ENDC}]'
+        Status_WARNING = f'[{colors.WARNING}-{colors.ENDC}]'
+        Status_FAIL = f'[{colors.FAIL}!{colors.ENDC}]'
+        Status_HEADER = f'[{colors.HEADER}{indent}{colors.ENDC}]'
+        Status_KEY = f'{colors.OKBLUE}'
+
+        return(f'{Status_HEADER} Today\'s forecast for {Status_KEY}{self.city}, {self.state.title()} {colors.ENDC}\n'
+               f'{offset}{Status_OK} Temp: {self.current_temp}\n'
+               f'{offset}{Status_OK} Humidity: {self.humidity}\n'
+               f'{offset}{Status_OK} Wind: {self.wind}\n'
+               f'{offset}{Status_WARNING} High/Low: {self.high_temp}/{self.low_temp}\n'
                )

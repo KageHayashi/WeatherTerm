@@ -52,14 +52,18 @@ def requestForecast(state='', city='', code=None):
     weatherRequest = requests.get(weatherBaseURL + str(code))
     weatherContent = weatherRequest.content
     weatherSoup = BeautifulSoup(weatherContent, "html.parser")
+    try:
+        current = (weatherSoup.find("span", class_="_-_-components-src-organism-CurrentConditions-CurrentConditions--tempValue--MHmYY").contents[0])
+        pressure = weatherSoup.find("span", class_="_-_-components-src-atom-WeatherData-Pressure-Pressure--pressureWrapper--3SCLm undefined").contents[-1]
+        moleculeData = weatherSoup.find_all("div", class_="_-_-components-src-molecule-WeatherDetailsListItem-WeatherDetailsListItem--wxData--kK35q")
 
-    current = (weatherSoup.find("span", class_="_-_-components-src-organism-CurrentConditions-CurrentConditions--tempValue--MHmYY").contents[0])
-    pressure = weatherSoup.find("span", class_="_-_-components-src-atom-WeatherData-Pressure-Pressure--pressureWrapper--3SCLm undefined").contents[-1]
-    moleculeData = weatherSoup.find_all("div", class_="_-_-components-src-molecule-WeatherDetailsListItem-WeatherDetailsListItem--wxData--kK35q")
+        humidity = (moleculeData[2].contents[0].contents[0])
+        high= (moleculeData[0].contents[0].contents[0])
+        low = (moleculeData[0].contents[2].contents[0])
+        wind = (moleculeData[1].contents[0].contents[-1])
 
-    humidity = (moleculeData[2].contents[0].contents[0])
-    high= (moleculeData[0].contents[0].contents[0])
-    low = (moleculeData[0].contents[2].contents[0])
-    wind = (moleculeData[1].contents[0].contents[-1])
+        return Forecast(city, state, current, humidity, wind, high, low)
+    except:
+        print("Something went wrong. City-State mismatch?")
 
-    return Forecast(current, humidity, wind, high, low)
+
