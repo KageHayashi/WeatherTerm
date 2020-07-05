@@ -42,3 +42,9 @@ python -m weatherterm --help
 - [ ] Unit conversion
 - [ ] Possible migration into a full-fledged CLI
 - [ ] Option to use different parsers and API
+
+## Skills Learned 
+- Web-scraping using the Requests and BeautifulSoup libraries 
+- Using argparse to build command-line parsers
+- Enumeration using the Enum object
+- 
