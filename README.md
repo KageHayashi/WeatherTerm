@@ -47,4 +47,3 @@ python -m weatherterm --help
 - Web-scraping using the Requests and BeautifulSoup libraries 
 - Using argparse to build command-line parsers
 - Enumeration using the Enum object
-- 
