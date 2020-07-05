@@ -19,7 +19,7 @@ Since this is intented as a python module, you have to run it with the -m comman
 python -m weatherterm -s [STATE] -c [CITY]
 ```
 ### Example
-![](testimages/example.JPG)
+![](testimages/Capture.JPG)
 
 ## Help 
 To display the help menu use:
